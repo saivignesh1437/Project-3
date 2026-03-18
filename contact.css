@@ -1,0 +1,171 @@
+/* =============================================
+   contact.css — Contact page styles
+   ============================================= */
+
+
+/* ─── PAGE WRAPPER ────────────────────────── */
+
+.page {
+  min-height: 100vh;
+  background: var(--bg);
+  transition: background 0.3s;
+}
+
+/* Centered content column */
+.contact {
+  max-width: 620px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+
+/* ─── CARD HEADING ────────────────────────── */
+
+/* Top half of the card (rounded top corners only) */
+.contact h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  padding: 22px 24px 18px;
+  background: var(--card);
+  border-radius: 12px 12px 0 0;   /* only round the top */
+  border-bottom: 1px solid var(--border);
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+
+/* ─── FORM CARD BODY ──────────────────────── */
+
+/* Bottom half of the card (rounded bottom corners only) */
+#contactForm {
+  background: var(--card);
+  border-radius: 0 0 12px 12px;   /* only round the bottom */
+  padding: 28px 36px 32px;
+  border: 1px solid var(--border);
+  border-top: none;                /* heading already has the bottom border */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s;
+}
+
+
+/* ─── FORM ROWS (label + input pairs) ─────── */
+
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Right-aligned label column */
+.form-row label {
+  min-width: 80px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  padding-top: 11px;       /* vertically align with the input text */
+  text-align: right;
+  transition: color 0.3s;
+}
+
+/* Input and textarea share the same base style */
+.form-row input,
+.form-row textarea {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, background 0.3s;
+}
+
+/* Blue ring when focused */
+.form-row input:focus,
+.form-row textarea:focus {
+  border-color: var(--p);
+  box-shadow: 0 0 0 3px rgba(42, 91, 170, 0.2);
+}
+
+/* Textarea specific: taller + user can resize vertically */
+.form-row textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+
+/* ─── SUBMIT BUTTON ───────────────────────── */
+
+.submit {
+  display: flex;
+  justify-content: center;
+}
+
+.submit button {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--p), var(--pd));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+/* Darken gradient + subtle lift on hover */
+.submit button:hover {
+  background: linear-gradient(135deg, var(--pd), #163a70);
+  transform: translateY(-1px);
+}
+
+
+/* ─── SUCCESS MESSAGE ─────────────────────── */
+
+/* Shown after form is submitted (JS sets display: block) */
+#successMsg {
+  display: none;             /* hidden by default */
+  padding: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: #27ae60;            /* green text */
+  background: rgba(39, 174, 96, 0.15);
+  border: 1px solid rgba(39, 174, 96, 0.4);
+  border-radius: 8px;
+}
+
+/* Lighter green in dark mode for better contrast */
+body.dark-mode #successMsg {
+  color: #6fcf97;
+}
+
+
+/* ─── RESPONSIVE (phones) ─────────────────── */
+
+@media (max-width: 600px) {
+
+  /* Reduce form padding on small screens */
+  #contactForm {
+    padding: 20px 18px;
+  }
+
+  /* Stack label above input instead of side by side */
+  .form-row {
+    flex-direction: column;
+  }
+
+  .form-row label {
+    text-align: left;
+    padding-top: 0;
+    min-width: unset;    /* remove the fixed 80px width */
+  }
+
+}

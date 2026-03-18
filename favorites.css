@@ -1,0 +1,218 @@
+/* =============================================
+   favorites.css — Favorites page styles
+   ============================================= */
+
+
+/* ─── PAGE LAYOUT ─────────────────────────── */
+
+.fav-container {
+  max-width: 760px;
+  margin: 30px auto;
+  padding: 0 20px 50px;
+}
+
+
+/* ─── MAIN CARD ───────────────────────────── */
+
+.fav-card {
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;          /* clips child elements to the rounded corners */
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s;
+}
+
+/* Blue gradient header inside the card */
+.fav-card h2 {
+  background: linear-gradient(135deg, var(--p), var(--pd));
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 18px 24px;
+  margin: 0;
+}
+
+
+/* ─── SEARCH BOX ──────────────────────────── */
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  padding: 18px 20px;
+  background: var(--input-bg);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+/* Text input inside the search box */
+.search-box input {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, background 0.3s;
+}
+
+.search-box input::placeholder {
+  color: var(--muted);
+}
+
+/* Blue ring when focused */
+.search-box input:focus {
+  border-color: var(--p);
+  box-shadow: 0 0 0 3px rgba(42, 91, 170, 0.2);
+}
+
+/* Search button next to the input */
+.search-btn {
+  padding: 11px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--p), var(--pd));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-btn:hover {
+  background: var(--pd);
+}
+
+
+/* ─── CITY LIST ───────────────────────────── */
+
+/* Vertical stack of saved city rows */
+.city-list {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Each saved city row */
+.city-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--card);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+.city-item:last-child {
+  border-bottom: none;       /* no divider after the last row */
+}
+
+.city-item:hover {
+  background: var(--input-bg);
+}
+
+/* City name label */
+.city-item > span {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Wrapper for the action buttons (view + remove) */
+.city-item > div {
+  display: flex;
+  gap: 10px;
+}
+
+
+/* ─── ACTION BUTTONS ──────────────────────── */
+
+/* "View" button (blue) */
+button.view {
+  padding: 9px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--p);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.view:hover {
+  background: var(--pd);
+}
+
+/* "Remove" button (red) */
+button.remove {
+  padding: 9px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #c0392b;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button.remove:hover {
+  background: #a93226;
+}
+
+
+/* ─── EMPTY STATE ─────────────────────────── */
+
+/* Shown when no cities have been saved yet */
+.empty-text {
+  text-align: center;
+  padding: 18px 20px;
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* The highlighted keyword inside the empty message */
+.empty-text b {
+  font-style: normal;
+  color: var(--p);
+}
+
+
+/* ─── SECONDARY BUTTON (Bootstrap override) ── */
+
+.btn.btn-secondary {
+  background: #6c757d;
+  border: none;
+  color: #fff;
+}
+
+.btn.btn-secondary:hover {
+  background: #5a6268;
+}
+
+/* Slightly lighter shade in dark mode for better contrast */
+body.dark-mode .btn.btn-secondary       { background: #3a4a60; }
+body.dark-mode .btn.btn-secondary:hover { background: #4a5a70; }
+
+
+/* ─── RESPONSIVE (phones) ─────────────────── */
+
+@media (max-width: 480px) {
+
+  /* Tighter side padding on small screens */
+  .fav-container {
+    padding: 0 10px 40px;
+  }
+
+  /* Stack city name and buttons vertically instead of side by side */
+  .city-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+}

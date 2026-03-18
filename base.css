@@ -1,0 +1,135 @@
+/* ─── LIGHT MODE (default) ───────────────── */
+
+:root {
+
+  /* Brand colors */
+  --p:            #2a5baa;   /* primary blue */
+  --pd:           #1e4a8a;   /* darker blue (hover) */
+
+  /* Page & layout */
+  --bg:           #c9d8ea;   /* page background */
+  --card:         #ffffff;   /* card / panel background */
+  --border:       #dce5f0;   /* dividers and borders */
+
+  /* Text */
+  --text:         #1a1a2e;   /* main body text */
+  --muted:        #5a6a80;   /* secondary / hint text */
+
+  /* Inputs */
+  --input-bg:     #ffffff;   /* input field background */
+  --input-border: #c0cfe0;   /* input field border */
+
+  /* Components */
+  --w:            #ffffff;   /* pure white (buttons, icons) */
+  --navbar-bg:    #2a5baa;   /* navbar background */
+  --footer-bg:    #eef2f8;   /* footer background */
+}
+
+
+/* ─── DARK MODE ───────────────────────────── */
+/* Applied when <body class="dark-mode"> is set via JS */
+
+body.dark-mode {
+
+  /* Page & layout */
+  --bg:           #0f1a2e;
+  --card:         #162035;
+  --border:       #243050;
+
+  /* Text */
+  --text:         #d0daea;
+  --muted:        #6a7a90;
+
+  /* Inputs */
+  --input-bg:     #1e2e4a;
+  --input-border: #2a3e5e;
+
+  /* Components */
+  --navbar-bg:    #0d2248;
+  --footer-bg:    #0f1a2e;
+}
+
+
+/* ─── RESET ───────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ─── BODY ────────────────────────────────── */
+
+body {
+  font-family: sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;   /* smooth light/dark switch */
+}
+
+
+/* ─── NAVBAR ──────────────────────────────── */
+
+.navbar.bg-dark {
+  background: var(--navbar-bg) !important;
+  padding: 12px 24px;
+  transition: background 0.3s;
+}
+
+.navbar-brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--w) !important;
+}
+
+.nav-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75) !important;
+  padding: 6px 14px !important;
+  border-bottom: 2px solid transparent;       /* placeholder for active underline */
+  transition: color 0.2s, border-color 0.2s;
+}
+
+/* Underline appears on hover or when link is active */
+.nav-link:hover,
+.nav-link.active {
+  color: var(--w) !important;
+  border-bottom-color: var(--w);
+  font-weight: 700;
+}
+
+/* Dark/light mode toggle button and any outline button in the navbar */
+#themeToggle,
+.btn.btn-outline-light {
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  color: var(--w);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;      /* pill shape */
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#themeToggle:hover,
+.btn.btn-outline-light:hover {
+  background: rgba(255, 255, 255, 0.15);    /* subtle glow on hover */
+}
+
+
+/* ─── FOOTER ──────────────────────────────── */
+
+footer {
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border);
+  padding: 16px 30px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+  transition: background 0.3s;    /* smooth dark mode switch */
+}
